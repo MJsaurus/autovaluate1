@@ -10,159 +10,299 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/dist/tabler-icons.min.css" rel="stylesheet">
 <style>
+:root{--indigo:#3B38F0;--indigo-light:#6C68FF;--tint:#F0F1FF;--gray:#FAFAF9;--text:#151619;--muted:#5C5E68;--border:#ECECE9;--red:#C42626;--redbg:#FCEBEB;--green:#2EB88C;--dark:#151619}
 *{box-sizing:border-box}
-body{margin:0;background:#E9E8E4;font-family:'Inter',sans-serif;color:#151619;line-height:1.5}
-h1,h2,h3,.disp{font-family:'Montserrat',sans-serif;margin:0}
-.page{max-width:720px;margin:0 auto;background:#FAFAF9;border-left:.5px solid #ECECE9;border-right:.5px solid #ECECE9}
-details{border-bottom:.5px solid #ECECE9;padding:14px 0}
-summary{list-style:none;cursor:pointer;font-size:14px;font-weight:600;display:flex;justify-content:space-between;gap:10px}
-summary::-webkit-details-marker{display:none}
-summary::after{content:'\002B';color:#3B38F0;font-weight:600}
-details[open] summary::after{content:'\2212'}
-.row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:.5px solid #F4F3EF;font-size:13px}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;font-family:'Inter',sans-serif;color:var(--text);line-height:1.6}
+h1,h2,h3,.disp{font-family:'Montserrat',sans-serif;margin:0;line-height:1.2}
+a{color:inherit}
+img,svg{max-width:100%}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.section{padding:84px 0}
+.sec-gray{background:var(--gray)}
+.sec-tint{background:var(--tint)}
+.eyebrow{font-size:12px;letter-spacing:.09em;font-weight:600;color:var(--indigo);text-transform:uppercase;margin-bottom:14px}
+h2{font-size:30px;font-weight:700}
+.lead{font-size:17px;color:var(--muted);line-height:1.7}
+.center{text-align:center}
+.section-head{max-width:640px;margin:0 auto 52px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:15px;padding:12px 24px;border-radius:6px;text-decoration:none;cursor:pointer;border:1px solid transparent;font-family:inherit}
+.btn-primary{background:var(--indigo);color:#fff}
+.btn-primary:hover{background:var(--indigo-light)}
+.btn-ghost{background:#fff;color:var(--text);border-color:var(--border)}
+.btn-ghost:hover{border-color:var(--indigo);color:var(--indigo)}
+.btn-lg{padding:15px 30px;font-size:16px}
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:66px}
+.brand{display:flex;align-items:center;gap:8px;font-family:'Montserrat';font-weight:700;font-size:19px}
+.brand i{color:var(--indigo);font-size:24px}
+.nav-links{display:flex;gap:30px}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500}
+.nav-links a:hover{color:var(--text)}
+.hero{background:linear-gradient(180deg,var(--tint) 0%,#fff 100%);padding:74px 0 84px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
+.hero h1{font-size:clamp(30px,4.4vw,44px);font-weight:700;margin-bottom:20px}
+.hero .lead{margin-bottom:28px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+.hero-trust{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px}
+.hero-trust i{color:var(--indigo);font-size:18px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.card{background:#fff;border:1px solid var(--border);border-radius:12px}
+.step{text-align:center;padding:8px}
+.step .ic{width:52px;height:52px;border-radius:50%;background:var(--tint);color:var(--indigo);display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 14px}
+.step h3{font-size:16px;font-weight:600;margin-bottom:6px}
+.step p{font-size:14px;color:var(--muted);margin:0}
+.row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid #F4F3EF;font-size:13px}
 .flag{opacity:0;transform:scale(1.1)}
 .flag.on{opacity:1;transform:scale(1);transition:all .32s cubic-bezier(.2,1.35,.5,1)}
-a.cta{display:inline-block;background:#3B38F0;color:#fff;text-decoration:none;font-size:15px;font-weight:600;padding:13px 30px;border-radius:6px}
+.price-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:760px;margin:0 auto}
+.price-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:30px}
+.price-card h3{font-size:17px;font-weight:600;margin-bottom:6px}
+.price{font-family:'Montserrat';font-size:36px;font-weight:700;margin:6px 0 18px}
+.plist{list-style:none;padding:0;margin:0 0 24px}
+.plist li{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--muted);padding:7px 0}
+.plist i{color:var(--green);font-size:18px;flex-shrink:0}
+.prop i{color:var(--indigo);font-size:26px;margin-bottom:10px;display:block}
+.prop h3{font-size:15px;font-weight:600;margin-bottom:5px}
+.prop p{font-size:13px;color:var(--muted);margin:0;line-height:1.6}
+details{border-bottom:1px solid var(--border);padding:16px 0}
+summary{list-style:none;cursor:pointer;font-size:15px;font-weight:600;display:flex;justify-content:space-between;gap:10px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:'\002B';color:var(--indigo);font-weight:600}
+details[open] summary::after{content:'\2212'}
+details p{font-size:14px;color:var(--muted);line-height:1.65;margin:10px 0 0}
+.faq{max-width:760px;margin:0 auto}
+.footer{background:var(--dark);color:#B4B2A9;padding:56px 0 30px}
+.footer a{color:#B4B2A9;text-decoration:none;font-size:14px}
+.footer a:hover{color:#fff}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.foot-brand{display:flex;align-items:center;gap:8px;font-family:'Montserrat';font-weight:700;font-size:18px;color:#fff;margin-bottom:12px}
+.foot-brand i{color:var(--indigo-light)}
+.foot-col h4{font-size:13px;color:#fff;font-weight:600;margin:0 0 12px;font-family:'Inter'}
+.foot-col a{display:block;margin-bottom:8px}
+.foot-legal{border-top:1px solid #2C2C2A;padding-top:24px;font-size:12px;color:#888780;line-height:1.6}
+@media(max-width:860px){.hero-grid,.two-col{grid-template-columns:1fr;gap:36px}.grid-3,.grid-4,.price-grid,.foot-grid{grid-template-columns:1fr}.nav-links{display:none}.section{padding:60px 0}}
 </style>
 </head>
 <body>
-<div class="page">
 
-  <div style="background:#F0F1FF;padding:2.75rem 1.75rem;text-align:center">
-    <div style="font-size:11px;letter-spacing:.09em;font-weight:600;color:#3B38F0;margin-bottom:16px">DIMINISHED VALUE &amp; TOTAL LOSS REPORTS</div>
-    <h1 class="disp" style="font-size:28px;font-weight:700;line-height:1.2;margin:0 auto 16px;max-width:18ch">Even after a flawless repair, your car is worth less after an accident.</h1>
-    <p style="font-size:15px;color:#5C5E68;margin:0 auto 24px;max-width:54ch;line-height:1.65">That loss of market value is called <span style="color:#151619;font-weight:600">Diminished Value</span>. Once a collision is recorded on your vehicle's permanent history, dealers and private buyers pay less for it — regardless of how well it was repaired. See what your vehicle may have lost in about 60 seconds.</p>
-    <a href="#" class="cta">Get my free estimate <i class="ti ti-arrow-right" style="vertical-align:-2px" aria-hidden="true"></i></a>
-    <div style="font-size:12px;color:#5C5E68;margin-top:16px">Prepared and signed by a licensed Texas adjuster · no obligation</div>
-  </div>
-
-  <div style="padding:2rem 1.75rem;border-top:.5px solid #ECECE9">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px;text-align:center">
-      <div><div style="font-size:24px;color:#3B38F0;margin-bottom:8px"><i class="ti ti-car" aria-hidden="true"></i></div><div style="font-size:14px;font-weight:600">Tell us about your car</div></div>
-      <div><div style="font-size:24px;color:#3B38F0;margin-bottom:8px"><i class="ti ti-calculator" aria-hidden="true"></i></div><div style="font-size:14px;font-weight:600">See your free estimate</div></div>
-      <div><div style="font-size:24px;color:#3B38F0;margin-bottom:8px"><i class="ti ti-file-certificate" aria-hidden="true"></i></div><div style="font-size:14px;font-weight:600">Get your signed report</div></div>
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <div class="brand"><i class="ti ti-shield-check" aria-hidden="true"></i> AutoValuate</div>
+    <div class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#dv">Diminished value</a>
+      <a href="#total">Total loss</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
     </div>
+    <a href="#estimate" class="btn btn-primary">Get free estimate</a>
   </div>
+</nav>
 
-  <div style="padding:2.25rem 1.75rem;border-top:.5px solid #ECECE9;text-align:center">
-    <div style="font-size:11px;letter-spacing:.08em;font-weight:600;color:#3B38F0;margin-bottom:10px">DIMINISHED VALUE</div>
-    <h2 style="font-size:20px;font-weight:600;margin:0 0 10px">How an accident lowers your car's value</h2>
-    <p style="font-size:14px;color:#5C5E68;margin:0 auto 24px;max-width:52ch;line-height:1.6">Before anyone buys a used car, they check its history. The moment a reported accident shows up, the vehicle's market value drops — even if the repair is invisible. Here's how that plays out on a real example:</p>
-
-    <div style="max-width:420px;margin:0 auto;background:#fff;border:.5px solid #ECECE9;border-radius:12px;overflow:hidden;text-align:left">
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:.5px solid #ECECE9">
-        <div class="disp" style="font-weight:600;font-size:13px;letter-spacing:.02em;display:flex;align-items:center;gap:8px"><i class="ti ti-file-description" style="color:#3B38F0;font-size:18px" aria-hidden="true"></i> VEHICLE HISTORY REPORT</div>
-        <div style="font-size:11px;color:#5C5E68">VIN ••••4821</div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Diminished value &amp; total loss reports</div>
+      <h1>Even after a flawless repair, your car is worth less after an accident.</h1>
+      <p class="lead">That loss of market value is called <strong style="color:var(--text)">Diminished Value</strong>. Once a collision is recorded on your vehicle's permanent history, dealers and private buyers pay less for it — regardless of how well it was repaired. See what your vehicle may have lost in about 60 seconds.</p>
+      <div class="hero-btns">
+        <a href="#estimate" class="btn btn-primary btn-lg">Get my free estimate <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+        <a href="#how" class="btn btn-ghost btn-lg">See how it works</a>
       </div>
-      <div style="padding:4px 16px 14px">
-        <div class="row"><span style="display:flex;align-items:center;gap:8px;color:#5C5E68"><i class="ti ti-circle-check" style="color:#2EB88C;font-size:17px" aria-hidden="true"></i> Title</span><span style="font-weight:600">Clean</span></div>
-        <div class="row"><span style="display:flex;align-items:center;gap:8px;color:#5C5E68"><i class="ti ti-circle-check" style="color:#2EB88C;font-size:17px" aria-hidden="true"></i> Previous owners</span><span style="font-weight:600">1</span></div>
-        <div class="row" style="border-bottom:none"><span style="display:flex;align-items:center;gap:8px;color:#5C5E68"><i class="ti ti-circle-check" style="color:#2EB88C;font-size:17px" aria-hidden="true"></i> Odometer</span><span style="font-weight:600">No issues</span></div>
-        <div class="flag" id="avFlag" style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 13px;margin-top:10px;background:#FCEBEB;border:.5px solid #F7C1C1;border-radius:6px">
-          <span style="display:flex;align-items:center;gap:8px;color:#C42626;font-weight:600;font-size:13px"><i class="ti ti-alert-triangle" style="font-size:19px" aria-hidden="true"></i> Accident reported</span>
-          <span style="color:#C42626;font-weight:600;font-size:12px">Front-end, structural repair</span>
+      <div class="hero-trust"><i class="ti ti-user-check" aria-hidden="true"></i> Prepared and signed by a licensed Texas adjuster · no obligation</div>
+    </div>
+    <div>
+      <div class="card" style="overflow:hidden">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--border)">
+          <div class="disp" style="font-weight:600;font-size:13px;letter-spacing:.02em;display:flex;align-items:center;gap:8px"><i class="ti ti-file-description" style="color:var(--indigo);font-size:18px" aria-hidden="true"></i> VEHICLE HISTORY REPORT</div>
+          <div style="font-size:11px;color:var(--muted)">VIN ••••4821</div>
+        </div>
+        <div style="padding:4px 16px 14px">
+          <div class="row"><span style="display:flex;align-items:center;gap:8px;color:var(--muted)"><i class="ti ti-circle-check" style="color:var(--green);font-size:17px" aria-hidden="true"></i> Title</span><span style="font-weight:600">Clean</span></div>
+          <div class="row"><span style="display:flex;align-items:center;gap:8px;color:var(--muted)"><i class="ti ti-circle-check" style="color:var(--green);font-size:17px" aria-hidden="true"></i> Previous owners</span><span style="font-weight:600">1</span></div>
+          <div class="row" style="border-bottom:none"><span style="display:flex;align-items:center;gap:8px;color:var(--muted)"><i class="ti ti-circle-check" style="color:var(--green);font-size:17px" aria-hidden="true"></i> Odometer</span><span style="font-weight:600">No issues</span></div>
+          <div class="flag" id="avFlag" style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 13px;margin-top:10px;background:var(--redbg);border:1px solid #F7C1C1;border-radius:6px">
+            <span style="display:flex;align-items:center;gap:8px;color:var(--red);font-weight:600;font-size:13px"><i class="ti ti-alert-triangle" style="font-size:19px" aria-hidden="true"></i> Accident reported</span>
+            <span style="color:var(--red);font-weight:600;font-size:12px">Front-end, structural repair</span>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div style="max-width:420px;margin:22px auto 0;text-align:left">
-      <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px"><span style="color:#5C5E68">Market value, clean history</span><span class="disp" style="font-weight:700">$52,000</span></div>
-      <div style="height:26px;background:#F0F1FF;border-radius:6px;margin-bottom:16px"><div style="height:100%;width:100%;background:#3B38F0;border-radius:6px"></div></div>
-      <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px"><span style="color:#5C5E68">Same car, accident on record</span><span class="disp" id="avAccVal" style="font-weight:700;color:#C42626">$52,000</span></div>
-      <div style="height:26px;background:#FCEBEB;border-radius:6px"><div id="avBar" style="height:100%;width:100%;background:#C42626;border-radius:6px"></div></div>
-    </div>
-
-    <div id="avLoss" class="disp" style="opacity:0;transition:opacity .4s;display:inline-block;margin-top:22px;background:#FCEBEB;color:#C42626;font-size:19px;font-weight:700;padding:11px 24px;border-radius:6px">−$12,000 in lost value (−23%)</div>
-    <p style="font-size:12px;color:#5C5E68;margin:14px auto 0;max-width:46ch;line-height:1.55">A documented structural repair like this typically removes 20–25% of a vehicle's market value. <a href="#" onclick="avPlay();return false" style="color:#3B38F0;text-decoration:none;white-space:nowrap"><i class="ti ti-refresh" style="vertical-align:-2px" aria-hidden="true"></i> Replay</a></p>
-  </div>
-
-  <div style="padding:0 1.75rem 2.5rem;text-align:center">
-    <div style="max-width:340px;margin:0 auto;background:#fff;border:.5px solid #ECECE9;border-radius:12px;overflow:hidden;text-align:left">
-      <div style="background:#151619;color:#fff;font-size:11px;font-weight:600;letter-spacing:.05em;padding:10px 16px">SAMPLE DEALER TRADE-IN QUOTE</div>
-      <div style="padding:14px 16px;font-size:13px">
-        <div style="display:flex;justify-content:space-between;padding:5px 0;color:#5C5E68"><span>Market value</span><span style="color:#151619">$52,000</span></div>
-        <div style="display:flex;justify-content:space-between;padding:5px 0;color:#5C5E68"><span>Reported accident history</span><span style="color:#C42626">−$12,000</span></div>
-        <div style="display:flex;justify-content:space-between;padding:9px 0 0;margin-top:6px;border-top:.5px solid #ECECE9;font-weight:600"><span>Dealer's offer to you</span><span>$40,000</span></div>
+      <div style="margin-top:16px">
+        <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px"><span style="color:var(--muted)">Clean history</span><span class="disp" style="font-weight:700">$52,000</span></div>
+        <div style="height:24px;background:var(--tint);border-radius:6px;margin-bottom:14px"><div style="height:100%;width:100%;background:var(--indigo);border-radius:6px"></div></div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px"><span style="color:var(--muted)">Accident on record</span><span class="disp" id="avAccVal" style="font-weight:700;color:var(--red)">$52,000</span></div>
+        <div style="height:24px;background:var(--redbg);border-radius:6px"><div id="avBar" style="height:100%;width:100%;background:var(--red);border-radius:6px"></div></div>
       </div>
+      <div id="avLoss" class="disp" style="opacity:0;transition:opacity .4s;text-align:center;margin-top:16px;background:var(--redbg);color:var(--red);font-size:17px;font-weight:700;padding:10px;border-radius:6px">−$12,000 in diminished value (−23%)</div>
     </div>
-    <p style="font-size:12px;color:#5C5E68;margin:12px auto 0;max-width:42ch">This is where the loss becomes real: at trade-in, at resale, or when you settle a claim.</p>
   </div>
+</header>
 
-  <div style="padding:2.25rem 1.75rem;border-top:.5px solid #ECECE9;text-align:center;background:#fff">
-    <div style="font-size:11px;letter-spacing:.08em;font-weight:600;color:#3B38F0;margin-bottom:10px">TOTAL LOSS VALUATION</div>
-    <h2 style="font-size:20px;font-weight:600;margin:0 0 10px">When your car is totaled, the insurer decides what it was worth</h2>
-    <p style="font-size:14px;color:#5C5E68;margin:0 auto 24px;max-width:52ch;line-height:1.6">After a total loss, the insurance company sets your payout from their own valuation — often below what it actually costs to replace your car with a comparable one. An independent valuation shows what the real market says.</p>
-
-    <div style="max-width:460px;margin:0 auto;background:#FAFAF9;border:.5px solid #ECECE9;border-radius:12px;overflow:hidden;text-align:left">
-      <div style="background:#151619;color:#fff;font-size:11px;font-weight:600;letter-spacing:.05em;padding:10px 16px;display:flex;align-items:center;gap:8px"><i class="ti ti-chart-dots" style="font-size:16px" aria-hidden="true"></i> REPLACEMENT COST ANALYSIS</div>
-      <div style="padding:12px 12px 6px">
-        <svg viewBox="0 0 400 150" width="100%" style="max-width:100%;height:auto" role="img" aria-label="Dot plot: comparable vehicles cluster around a $22,900 market average, while the insurer's offer of $18,400 sits well below the market.">
-          <line x1="30" y1="82" x2="380" y2="82" stroke="#ECECE9" stroke-width="1"/>
-          <text x="30" y="100" font-size="10" fill="#5C5E68" font-family="Inter" text-anchor="middle">$16k</text>
-          <text x="380" y="100" font-size="10" fill="#5C5E68" font-family="Inter" text-anchor="middle">$26k</text>
-          <circle cx="236" cy="88" r="6" fill="#3B38F0" fill-opacity="0.85"/>
-          <circle cx="243" cy="74" r="6" fill="#3B38F0" fill-opacity="0.85"/>
-          <circle cx="254" cy="82" r="6" fill="#3B38F0" fill-opacity="0.85"/>
-          <circle cx="261" cy="76" r="6" fill="#3B38F0" fill-opacity="0.85"/>
-          <circle cx="278" cy="88" r="6" fill="#3B38F0" fill-opacity="0.85"/>
-          <circle cx="296" cy="75" r="6" fill="#3B38F0" fill-opacity="0.85"/>
-          <circle cx="300" cy="84" r="6" fill="#3B38F0" fill-opacity="0.85"/>
-          <line x1="272" y1="46" x2="272" y2="86" stroke="#3B38F0" stroke-width="1.5" stroke-dasharray="3 3"/>
-          <text x="272" y="24" font-size="10" fill="#5C5E68" font-family="Inter" text-anchor="middle">market average</text>
-          <text x="272" y="39" font-size="13" font-weight="700" fill="#151619" font-family="Montserrat" text-anchor="middle">$22,900</text>
-          <circle cx="114" cy="82" r="8" fill="#C42626"/>
-          <text x="114" y="107" font-size="13" font-weight="700" fill="#C42626" font-family="Montserrat" text-anchor="middle">$18,400</text>
-          <text x="114" y="121" font-size="10" fill="#C42626" font-family="Inter" text-anchor="middle">insurer's offer</text>
-        </svg>
-      </div>
+<section class="section" id="how">
+  <div class="wrap">
+    <div class="section-head center"><div class="eyebrow">How it works</div><h2>Three steps to your report</h2></div>
+    <div class="grid-3">
+      <div class="step"><div class="ic"><i class="ti ti-car" aria-hidden="true"></i></div><h3>Tell us about your car</h3><p>Enter your VIN or vehicle details and what happened. Takes about a minute.</p></div>
+      <div class="step"><div class="ic"><i class="ti ti-calculator" aria-hidden="true"></i></div><h3>See your free estimate</h3><p>Get a preliminary range instantly, based on real market data. No email required.</p></div>
+      <div class="step"><div class="ic"><i class="ti ti-file-certificate" aria-hidden="true"></i></div><h3>Get your signed report</h3><p>A comprehensive report, reviewed and signed by a licensed adjuster, ready to submit.</p></div>
     </div>
-    <p style="font-size:12px;color:#5C5E68;margin:14px auto 0;max-width:48ch;line-height:1.55">Each dot is a comparable vehicle currently for sale. The insurer's offer sits well below what it actually costs to replace your car.</p>
-    <div class="disp" style="display:inline-block;margin-top:16px;background:#FCEBEB;color:#C42626;font-size:19px;font-weight:700;padding:11px 24px;border-radius:6px">$4,500 below market to replace it (−20%)</div>
   </div>
+</section>
 
-  <div style="padding:2rem 1.75rem;border-top:.5px solid #ECECE9">
-    <div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap">
-      <div style="width:56px;height:56px;border-radius:50%;background:#F0F1FF;display:flex;align-items:center;justify-content:center;font-size:24px;color:#3B38F0;flex-shrink:0"><i class="ti ti-user-check" aria-hidden="true"></i></div>
-      <div style="flex:1;min-width:220px">
-        <div style="font-size:15px;font-weight:600">Reviewed and signed by a licensed Texas adjuster</div>
-        <div style="font-size:13px;color:#5C5E68;line-height:1.6;margin-top:4px">Every report is independently reviewed and signed off by a licensed Texas adjuster before you receive it. Real professional oversight on every valuation, not just an automated number.</div>
-        <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
-          <span style="font-size:12px;background:#F0F1FF;color:#3B38F0;padding:6px 12px;border-radius:6px;font-weight:500"><i class="ti ti-file-text" style="vertical-align:-2px" aria-hidden="true"></i> View sample report</span>
-          <span style="font-size:12px;background:#fff;border:.5px solid #ECECE9;color:#5C5E68;padding:6px 12px;border-radius:6px"><i class="ti ti-rosette-discount-check" style="vertical-align:-2px" aria-hidden="true"></i> No charge if we find no meaningful lost value</span>
+<section class="section sec-gray" id="dv">
+  <div class="wrap two-col">
+    <div>
+      <div class="eyebrow">Diminished value</div>
+      <h2>How an accident lowers your car's value</h2>
+      <p class="lead" style="margin:16px 0 20px">Before anyone buys a used car, they check its history. The moment a reported accident shows up, the vehicle's market value drops — even if the repair is invisible. A documented structural repair like this typically removes 20–25% of a vehicle's market value.</p>
+      <p style="font-size:14px;color:var(--muted);margin:0">This is where the loss becomes real: at trade-in, at resale, or when you settle a claim.</p>
+    </div>
+    <div>
+      <div class="card" style="overflow:hidden;max-width:360px">
+        <div style="background:var(--dark);color:#fff;font-size:11px;font-weight:600;letter-spacing:.05em;padding:11px 16px">SAMPLE DEALER TRADE-IN QUOTE</div>
+        <div style="padding:16px;font-size:14px">
+          <div style="display:flex;justify-content:space-between;padding:6px 0;color:var(--muted)"><span>Market value</span><span style="color:var(--text)">$52,000</span></div>
+          <div style="display:flex;justify-content:space-between;padding:6px 0;color:var(--muted)"><span>Reported accident history</span><span style="color:var(--red)">−$12,000</span></div>
+          <div style="display:flex;justify-content:space-between;padding:11px 0 0;margin-top:6px;border-top:1px solid var(--border);font-weight:600;font-size:15px"><span>Dealer's offer to you</span><span>$40,000</span></div>
         </div>
       </div>
     </div>
   </div>
+</section>
 
-  <div style="padding:2rem 1.75rem;border-top:.5px solid #ECECE9">
-    <h2 style="font-size:18px;font-weight:600;margin:0 0 10px">Common questions</h2>
-    <details><summary>What is diminished value?</summary><p style="font-size:13px;color:#5C5E68;line-height:1.6;margin:10px 0 0">After an accident, a vehicle's history is permanently recorded. Even with a perfect repair, that history can lower what the car is worth on the open market. That difference is its diminished value.</p></details>
-    <details><summary>Do I qualify for a diminished value claim?</summary><p style="font-size:13px;color:#5C5E68;line-height:1.6;margin:10px 0 0">Generally, a claim is possible when the vehicle is owned or financed (leased vehicles usually don't qualify), it had no significant prior accident damage, and another driver was at fault for the accident. Every case is different, so our free estimate helps you gauge whether it's worth pursuing.</p></details>
-    <details><summary>Can I recover diminished value if I was at fault?</summary><p style="font-size:13px;color:#5C5E68;line-height:1.6;margin:10px 0 0">Generally, no. Most states don't allow a diminished value claim against your own insurer when you were at fault. The rules vary, so check with an attorney in your state about whether diminished value or loss of use is recoverable in your situation.</p></details>
-    <details><summary>Will the insurance company pay it?</summary><p style="font-size:13px;color:#5C5E68;line-height:1.6;margin:10px 0 0">We can't guarantee any outcome, that's between you and the insurer. What we can do is give you a professional, data-driven report that clearly documents the loss so you can make a strong, well-supported case.</p></details>
-    <details><summary>Do you file or negotiate the claim for me?</summary><p style="font-size:13px;color:#5C5E68;line-height:1.6;margin:10px 0 0">No. We're not attorneys and we don't represent you in the claim. We provide the valuation report, and you or your attorney use it to advocate for yourself.</p></details>
-    <details><summary>How is the value calculated?</summary><p style="font-size:13px;color:#5C5E68;line-height:1.6;margin:10px 0 0">By comparing your vehicle against real, current market data, not the simplified "17c" formula many insurers lean on, which often understates the loss. Every report is reviewed and signed by a licensed adjuster.</p></details>
-    <details><summary>What if there's little or no lost value?</summary><p style="font-size:13px;color:#5C5E68;line-height:1.6;margin:10px 0 0">Then we tell you, and you're not charged for a report. We only want to sell you something worth having.</p></details>
+<section class="section" id="total">
+  <div class="wrap two-col">
+    <div>
+      <div class="eyebrow">Total loss valuation</div>
+      <h2>When your car is totaled, the insurer decides what it was worth</h2>
+      <p class="lead" style="margin:16px 0 20px">After a total loss, the insurance company sets your payout from their own valuation — often below what it actually costs to replace your car with a comparable one. An independent valuation shows what the real market says.</p>
+      <div class="disp" style="display:inline-block;background:var(--redbg);color:var(--red);font-size:18px;font-weight:700;padding:11px 22px;border-radius:6px">$4,500 below market to replace it (−20%)</div>
+    </div>
+    <div>
+      <div class="card sec-gray" style="overflow:hidden">
+        <div style="background:var(--dark);color:#fff;font-size:11px;font-weight:600;letter-spacing:.05em;padding:11px 16px;display:flex;align-items:center;gap:8px"><i class="ti ti-chart-dots" style="font-size:16px" aria-hidden="true"></i> REPLACEMENT COST ANALYSIS</div>
+        <div style="padding:14px 12px 8px">
+          <svg viewBox="0 0 400 150" width="100%" style="height:auto" role="img" aria-label="Dot plot: comparable vehicles cluster around a $22,900 market average, while the insurer's offer of $18,400 sits well below the market.">
+            <line x1="30" y1="82" x2="380" y2="82" stroke="#ECECE9" stroke-width="1"/>
+            <text x="30" y="100" font-size="10" fill="#5C5E68" font-family="Inter" text-anchor="middle">$16k</text>
+            <text x="380" y="100" font-size="10" fill="#5C5E68" font-family="Inter" text-anchor="middle">$26k</text>
+            <circle cx="236" cy="88" r="6" fill="#3B38F0" fill-opacity="0.85"/>
+            <circle cx="243" cy="74" r="6" fill="#3B38F0" fill-opacity="0.85"/>
+            <circle cx="254" cy="82" r="6" fill="#3B38F0" fill-opacity="0.85"/>
+            <circle cx="261" cy="76" r="6" fill="#3B38F0" fill-opacity="0.85"/>
+            <circle cx="278" cy="88" r="6" fill="#3B38F0" fill-opacity="0.85"/>
+            <circle cx="296" cy="75" r="6" fill="#3B38F0" fill-opacity="0.85"/>
+            <circle cx="300" cy="84" r="6" fill="#3B38F0" fill-opacity="0.85"/>
+            <line x1="272" y1="46" x2="272" y2="86" stroke="#3B38F0" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <text x="272" y="24" font-size="10" fill="#5C5E68" font-family="Inter" text-anchor="middle">market average</text>
+            <text x="272" y="39" font-size="13" font-weight="700" fill="#151619" font-family="Montserrat" text-anchor="middle">$22,900</text>
+            <circle cx="114" cy="82" r="8" fill="#C42626"/>
+            <text x="114" y="107" font-size="13" font-weight="700" fill="#C42626" font-family="Montserrat" text-anchor="middle">$18,400</text>
+            <text x="114" y="121" font-size="10" fill="#C42626" font-family="Inter" text-anchor="middle">insurer's offer</text>
+          </svg>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin:12px 0 0">Each dot is a comparable vehicle currently for sale. The insurer's offer sits well below what it actually costs to replace your car.</p>
+    </div>
   </div>
+</section>
 
-  <div style="padding:1.25rem 1.75rem;border-top:.5px solid #ECECE9;background:#fff">
-    <p style="font-size:12px;color:#5C5E68;line-height:1.55;margin:0;text-align:center">AutoValuate provides professional vehicle valuation reports. We are not a law firm and do not provide legal advice or represent you in your claim.</p>
+<section class="section sec-gray" id="pricing">
+  <div class="wrap">
+    <div class="section-head center"><div class="eyebrow">Pricing</div><h2>Flat pricing, no surprises</h2><p class="lead" style="margin-top:12px">One flat fee per report. No charge if we find no meaningful lost value.</p></div>
+    <div class="price-grid">
+      <div class="price-card">
+        <h3>Diminished Value Report</h3>
+        <div class="price">$299</div>
+        <ul class="plist">
+          <li><i class="ti ti-check" aria-hidden="true"></i> Independent market valuation</li>
+          <li><i class="ti ti-check" aria-hidden="true"></i> Comparable-sales analysis</li>
+          <li><i class="ti ti-check" aria-hidden="true"></i> Reviewed &amp; signed by a licensed adjuster</li>
+          <li><i class="ti ti-check" aria-hidden="true"></i> Formatted to submit to the insurer</li>
+        </ul>
+        <a href="#estimate" class="btn btn-primary" style="width:100%;justify-content:center">Start free estimate</a>
+      </div>
+      <div class="price-card">
+        <h3>Total Loss Report</h3>
+        <div class="price">$299</div>
+        <ul class="plist">
+          <li><i class="ti ti-check" aria-hidden="true"></i> Replacement-cost market analysis</li>
+          <li><i class="ti ti-check" aria-hidden="true"></i> Comparable-listings evidence</li>
+          <li><i class="ti ti-check" aria-hidden="true"></i> Reviewed &amp; signed by a licensed adjuster</li>
+          <li><i class="ti ti-check" aria-hidden="true"></i> Formatted to submit to the insurer</li>
+        </ul>
+        <a href="#estimate" class="btn btn-primary" style="width:100%;justify-content:center">Start free estimate</a>
+      </div>
+    </div>
   </div>
+</section>
 
-  <div style="padding:2.5rem 1.75rem;border-top:.5px solid #ECECE9;text-align:center;background:#F0F1FF">
-    <h2 style="font-size:20px;font-weight:600;margin:0 0 8px">Find out what your accident may have cost you</h2>
-    <p style="font-size:13px;color:#5C5E68;margin:0 auto 20px;max-width:48ch;line-height:1.6">Time limits vary by state; in Texas it's generally about two years. The free estimate takes about a minute.</p>
-    <a href="#" class="cta">Get my free estimate <i class="ti ti-arrow-right" style="vertical-align:-2px" aria-hidden="true"></i></a>
+<section class="section">
+  <div class="wrap">
+    <div class="section-head center"><div class="eyebrow">Why AutoValuate</div><h2>Independent, and on your side</h2></div>
+    <div class="grid-4">
+      <div class="prop"><i class="ti ti-scale" aria-hidden="true"></i><h3>Independent</h3><p>We work for you, not the insurance company.</p></div>
+      <div class="prop"><i class="ti ti-database" aria-hidden="true"></i><h3>Data-driven</h3><p>Real market comparables, not generic book values.</p></div>
+      <div class="prop"><i class="ti ti-user-check" aria-hidden="true"></i><h3>Adjuster-signed</h3><p>Every report reviewed and signed by a licensed Texas adjuster.</p></div>
+      <div class="prop"><i class="ti ti-receipt" aria-hidden="true"></i><h3>Transparent</h3><p>Flat pricing, and no charge if there's no meaningful value.</p></div>
+    </div>
   </div>
+</section>
 
-</div>
+<section class="section sec-gray" id="faq">
+  <div class="wrap faq">
+    <div class="section-head center" style="margin-bottom:32px"><div class="eyebrow">FAQ</div><h2>Common questions</h2></div>
+    <details><summary>What is diminished value?</summary><p>After an accident, a vehicle's history is permanently recorded. Even with a perfect repair, that history can lower what the car is worth on the open market. That difference is its diminished value.</p></details>
+    <details><summary>Do I qualify for a diminished value claim?</summary><p>Generally, a claim is possible when the vehicle is owned or financed (leased vehicles usually don't qualify), it had no significant prior accident damage, and another driver was at fault for the accident. Every case is different, so our free estimate helps you gauge whether it's worth pursuing.</p></details>
+    <details><summary>Can I recover diminished value if I was at fault?</summary><p>Generally, no. Most states don't allow a diminished value claim against your own insurer when you were at fault. The rules vary, so check with an attorney in your state about whether diminished value or loss of use is recoverable in your situation.</p></details>
+    <details><summary>Will the insurance company pay it?</summary><p>We can't guarantee any outcome, that's between you and the insurer. What we can do is give you a professional, data-driven report that clearly documents the loss so you can make a strong, well-supported case.</p></details>
+    <details><summary>Do you file or negotiate the claim for me?</summary><p>No. We're not attorneys and we don't represent you in the claim. We provide the valuation report, and you or your attorney use it to advocate for yourself.</p></details>
+    <details><summary>How is the value calculated?</summary><p>By comparing your vehicle against real, current market data, not the simplified "17c" formula many insurers lean on, which often understates the loss. Every report is reviewed and signed by a licensed adjuster.</p></details>
+    <details><summary>What if there's little or no lost value?</summary><p>Then we tell you, and you're not charged for a report. We only want to sell you something worth having.</p></details>
+  </div>
+</section>
+
+<section class="section sec-tint" id="estimate">
+  <div class="wrap center">
+    <h2 style="margin-bottom:10px">Find out what your accident may have cost you</h2>
+    <p class="lead" style="max-width:520px;margin:0 auto 26px">Time limits vary by state; in Texas it's generally about two years. The free estimate takes about a minute.</p>
+    <a href="#" class="btn btn-primary btn-lg">Get my free estimate <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand"><i class="ti ti-shield-check" aria-hidden="true"></i> AutoValuate</div>
+        <p style="font-size:14px;max-width:34ch;margin:0">Independent, data-driven vehicle valuation reports for diminished value and total loss claims.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Services</h4>
+        <a href="#dv">Diminished value</a>
+        <a href="#total">Total loss</a>
+        <a href="#pricing">Pricing</a>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <a href="#how">How it works</a>
+        <a href="#faq">FAQ</a>
+        <a href="#estimate">Free estimate</a>
+      </div>
+    </div>
+    <div class="foot-legal">AutoValuate provides professional vehicle valuation reports. We are not a law firm and do not provide legal advice or represent you in your claim. © 2026 AutoValuate. All rights reserved.</div>
+  </div>
+</footer>
 
 <script>
 function avPlay(){
   var flag=document.getElementById('avFlag'),bar=document.getElementById('avBar'),av=document.getElementById('avAccVal'),loss=document.getElementById('avLoss');
   if(!flag)return;
   flag.classList.remove('on');bar.style.width='100%';av.textContent='$52,000';loss.style.opacity='0';
-  setTimeout(function(){flag.classList.add('on');},500);
+  setTimeout(function(){flag.classList.add('on');},600);
   setTimeout(function(){
     var t0=null,s=52000,e=40000,wS=100,wE=76.9;
     function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/1000,1);var k=1-Math.pow(1-p,2);
@@ -170,7 +310,7 @@ function avPlay(){
       bar.style.width=(wS-(wS-wE)*k)+'%';
       if(p<1)requestAnimationFrame(step);else loss.style.opacity='1';}
     requestAnimationFrame(step);
-  },1100);
+  },1200);
 }
 window.addEventListener('load',avPlay);
 </script>
